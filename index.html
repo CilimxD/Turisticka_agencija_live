@@ -1,13 +1,6 @@
 <!DOCTYPE html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-<c:set var="i" value="1" scope="page" />
-<sql:setDataSource driver="com.mysql.jdbc.Driver" password="123" user="dule" 
-                   url="jdbc:mysql://localhost:3306/turisticka_agencija?autoReconnect=true&useSSL=false"
-                   scope="application" var="db" />
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%
+        
 <div><link rel="import" href="\pages\header.html"></div>
 <div class='container' style="margin-top: 20px;">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
