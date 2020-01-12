@@ -137,10 +137,10 @@ $("document").ready(function () {
             sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
             console.log(sobeObe)
         }
-        for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
-            zvezdice += "<span class='glyphicon glyphicon-star'></span>";
-            console.log(zvezdice)
-        }
+        // for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
+        //     zvezdice += "<span class='glyphicon glyphicon-star'></span>";
+        //     console.log(zvezdice)
+        // }
         for (var i; duzina > i; i++) {
             proveraDrugu(i);
             txt +=
