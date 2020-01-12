@@ -132,6 +132,7 @@ $("document").ready(function () {
         var sobeObe = "";
         var zvezdice = "";
         console.log(smestaj[drzavaMesto][0])
+        console.log(CenaSobebroj2[drzavaMesto][0]);
         function proveraDrugu(i) {
             if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
                 console.log("Undefined")
