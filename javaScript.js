@@ -132,16 +132,16 @@ $("document").ready(function () {
         //         x = CenaSobebroj2[drzavaMesto][i];
         //     }
         // }
-        for (var j = 0; j < brojsobe; j++) {
-            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
-            "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
-            console.log(sobeObe)
-        }
-        for (var i; duzina > i; i++) {
-            for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
-                zvezdice += "<span class='glyphicon glyphicon-star'></span>";
-                console.log(brZvezdica[drzavaMesto][i] + "ajmo jos ovo da pog")
-            }
+        // for (var j = 0; j < brojsobe; j++) {
+        //     sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
+        //     "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+        //     console.log(sobeObe)
+        // }
+        // for (var i; duzina > i; i++) {
+        //     for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
+        //         zvezdice += "<span class='glyphicon glyphicon-star'></span>";
+        //         console.log(brZvezdica[drzavaMesto][i] + "ajmo jos ovo da pog")
+        //     }
             // proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
