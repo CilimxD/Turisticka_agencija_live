@@ -142,7 +142,7 @@ $("document").ready(function () {
         //     console.log(zvezdice)
         // }
         
-        console.log("test")
+        console.log(duzina)
         for (var i; duzina > i; i++) {
             console.log("test")
             txt +=
