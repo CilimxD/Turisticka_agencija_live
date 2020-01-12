@@ -64,7 +64,7 @@ $("document").ready(function () {
     var dugaciUrl = window.location.href;
     var upitnik = dugaciUrl.lastIndexOf("?");
     var URL = dugaciUrl.substring(0, upitnik);
-    if (URL === "http://localhost/TuristickaAgencija/pages/mesta.html") {
+    if (URL === "https://cilimxd.github.io/Turisticka_agencija_live/pages/mesta.html") {
         var nazivDrzave = dugaciUrl.lastIndexOf("=") + 1;
         var txt = "";
         var drzava = dugaciUrl.substring(nazivDrzave);
@@ -88,7 +88,7 @@ $("document").ready(function () {
         }
         $("#proba").html(txt1 + txt);
     }
-    if (URL === "http://localhost/TuristickaAgencija/pages/arazmani.html") {
+    if (URL === "https://cilimxd.github.io/Turisticka_agencija_live/pages/arazmani.html") {
         var txt = "";
         var nazivDrzave = dugaciUrl.indexOf("=");
         var and = dugaciUrl.indexOf("&");
