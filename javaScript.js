@@ -190,7 +190,7 @@ $("document").ready(function () {
             
             console.log(zvezdice);
         }
-        $("#proba").html(txt);
+        $("#minime").html(txt);
     }
 });
 
