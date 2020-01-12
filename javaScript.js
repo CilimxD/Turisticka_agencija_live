@@ -76,7 +76,7 @@ $("document").ready(function () {
         console.log(duzina)
         console.log(mesta.Srbija[1])
         txt1 = "<h1 class='naslov'>Ponuda" + " " + drzava + "</h1>"
-        for (var i; duzina > i; i++) {
+        for (var i=0; duzina > i; i++) {
             txt += "<div class='row'" +
                 "style='border: 3px solid black;box-shadow: 10px 10px 5px grey;position:relative;margin-top: 50px;background-color: #f0ead6'>" +
                 "<div class='col-sm-4' style='padding: 5px ;'>" +
