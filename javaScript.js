@@ -66,6 +66,7 @@ $("document").ready(function () {
     var URL = dugaciUrl.substring(0, upitnik);
     if (URL === "https://cilimxd.github.io/Turisticka_agencija_live/pages/mesta.html") {
         var nazivDrzave = dugaciUrl.lastIndexOf("=") + 1;
+        console.log(nazivDrzave)
         var txt = "";
         var drzava = dugaciUrl.substring(nazivDrzave);
         var mesta = { Srbija: ["Kopaonik", "Ribarska banja", "Stara Planina", "Zdrelo banja"], Grcka: ["Krf", "Tasos", "Lefkada", "Zakintos"], Turska: ["Marmaris", "Antalija", "Bodrum", "Instambul"] };
