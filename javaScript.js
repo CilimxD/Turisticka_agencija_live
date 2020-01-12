@@ -142,6 +142,7 @@ $("document").ready(function () {
         //     console.log(zvezdice)
         // }
         for (var i; duzina > i; i++) {
+            console.log("test")
             txt +=
                 "<div class='container'>" +
                     "<h1 class='naslov' style='font-size: 80px'>" + mestoNaziv + " &#160" + tipSmestaja[drzavaMesto][i] + "</h1>" +
