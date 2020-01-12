@@ -41,35 +41,16 @@ $("document").ready(function () {
                 $('.meni_desni').css("position", "absolute");
             }
         });
-    }
-    ;
-    //    setovanje aktivne klase
-
+    };
     var putanja = window.location.pathname;
     var brojKose;
     var brojTacke;
     var idStr;
-    console.log(putanja);
     brojKose = putanja.lastIndexOf("/") + 1;
     brojTacke = putanja.lastIndexOf(".");
     imeStr = putanja.substring(brojKose, brojTacke);
-    console.log(imeStr);
     idStr = $("li");
     var duzinaa = idStr.length;
-    console.log(idStr);
-    for (var i = 0; i < duzinaa; i++) {
-        console.log("aaaaaaa");
-        if (idStr[i].getAttribute("id") === imeStr) {
-
-            idStr[i].setAttribute("class", "active");
-            var sssss = idStr[i].getAttribute("class");
-            console.log(idStr[i].getAttribute("class"));
-        } else if (imeStr === "mesta") {
-            document.getElementById("drzava").classList.add("active");
-            console.log("neee");
-        }
-        console.log("cccc");
-    }
 
     //    setovanje aktivne klase za slider da radi
 
@@ -83,13 +64,6 @@ $("document").ready(function () {
     var dugaciUrl = window.location.href;
     var upitnik = dugaciUrl.lastIndexOf("?");
     var URL = dugaciUrl.substring(0, upitnik);
-    if (URL === "http://localhost/TuristickaAgencija/pages/arazmani.html") {
-        var sesijskoIme = $("#sesName").val();
-        if (sesijskoIme === "") {
-            alert("Morate biti ulogovani da bi rezervisali");
-
-        }
-    }
     if (URL === "http://localhost/TuristickaAgencija/pages/mesta.html") {
         var nazivDrzave = dugaciUrl.lastIndexOf("=") + 1;
         var txt = "";
