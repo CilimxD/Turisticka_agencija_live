@@ -131,7 +131,7 @@ $("document").ready(function () {
         var brojsobe = redniBrojSobe[drzavaMesto].length;
         var sobeObe = "";
         var zvezdice = "";
-        console.log(smestaj[drzavaMesto][0])
+        console.log(smestaj.SrbijaKopaonik[0])
         function proveraDrugu(i) {
             if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
                 console.log("Undefined")
