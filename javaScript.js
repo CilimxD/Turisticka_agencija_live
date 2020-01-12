@@ -181,7 +181,6 @@ $("document").ready(function () {
             console.log(zvezdice);
         }
         $("#minime").html(txt);
-    }
-});
+    });
 
 
