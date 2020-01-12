@@ -104,6 +104,7 @@ $("document").ready(function () {
             var mesto1 = dugaciUrl.substring(space + 3);
             drzavaMesto = drzava + mesto + mesto1;
             mestoNaziv = mesto + " " + mesto1;
+            console.log("da");
 
         } else if (dugaciUrl.indexOf("%") == -1) {
             var nazivMesta = dugaciUrl.lastIndexOf("=");
@@ -111,8 +112,10 @@ $("document").ready(function () {
             var mesto = dugaciUrl.substring(nazivMesta + 1);
             drzavaMesto = drzava + mesto;
             mestoNaziv = mesto;
+            console.log("ne");
         }
         console.log(drzavaMesto);
+        console.log(mestoNaziv);
         var slika = { SrbijaKopaonik: ["putnik", "foka_spa"], SrbijaRibarskabanja: ["janus", "di_lusso"], Staraplanina: ["hotel_stara_planina", "hotel_ana_lux"], SrbijaZdrelobanja: ["mlavske_terme", "novapark"], GrckaKrf: ["perama", "platania"], GrckaTasos: ["koula", "dukas"], GrckaLefkada: ["vasilis", "cosmos"], GrckaZakintos: ["socrates", "mari"], TurskaMarmaris: ["amos", "sesin"], TurskaAntalija: ["galaxy", "miracle_resort"], TurskaBodrum: ["mandarin_resort", "royal_asarlik"], TurskaInstambul: ["sahinler"] };
         var smestaj = { SrbijaKopaonik: ["Putnik", "Foka Spa"], SrbijaRibarskabanja: ["Janus", "Di Lusso"], Staraplanina: ["Hotel Stara Planina", "Hotel Ana Lux"], SrbijaZdrelobanja: ["Mlavske Terme Ždrelo", "Novapark"], GrckaKrf: ["Perama", "Platania"], GrckaTasos: ["Vila Koula", "Vila Dukas"], GrckaLefkada: ["Vila Vasilis", "Vila Cosmos"], GrckaZakintos: ["Socrates vila", "Mari vila"], TurskaMarmaris: ["Amos Hotel", "Sesin Hotel"], TurskaAntalija: ["Galaxy Beach hotel", "Miracle Resort"], TurskaBodrum: ["Mandarin Resort", " Royal Asarlik Beach Hotel"], TurskaInstambul: ["Hotel Sahinler"] };
         var tipSmestaja = { SrbijaKopaonik: ["Hotel", "Apartman"], SrbijaRibarskabanja: ["Apartman", "Hotel"], Staraplanina: ["Hotel", "Hotel"], SrbijaZdrelobanja: ["Hotel", "Apartman"], GrckaKrf: ["Hotel", "Apartman"], GrckaTasos: ["Apartman", "Apartman"], GrckaLefkada: ["Apartman", "Apartman"], GrckaZakintos: ["Apartman", "Apartman"], TurskaMarmaris: ["Hotel", "Hotel"], TurskaAntalija: ["Hotel", "Hotel"], TurskaBodrum: ["Hotel", "Hotel"], TurskaInstambul: ["Hotel"] };
