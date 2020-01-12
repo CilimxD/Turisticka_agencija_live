@@ -134,6 +134,7 @@ $("document").ready(function () {
         function proveraDrugu(i) {
             if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
                 console.log("Undefined")
+                x="";
             }
             if (typeof CenaSobebroj2[drzavaMesto] != 'undefined') {
                 x = CenaSobebroj2[drzavaMesto][i];
@@ -142,11 +143,14 @@ $("document").ready(function () {
         for (var j = 0; j < brojsobe; j++) {
             sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
             "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+            console.log(sobeObe)
         }
         for (var i; duzina > i; i++) {
             for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
                 zvezdice += "<span class='glyphicon glyphicon-star'></span>";
+                console.log(zvezdice)
             }
+            console.log(zvezdice);
             console.log(zvezdice);
             proveraDrugu(i);
             txt +=
