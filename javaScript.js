@@ -54,10 +54,10 @@ $("document").ready(function () {
 
     //    setovanje aktivne klase za slider da radi
 
-    if (window.location.href === "http://localhost:8080/TuristickaAgencija/index.html"
-        || window.location.href === "http://localhost:8080/TuristickaAgencija/" ||
-        window.location.href === "http://localhost:8080/TuristickaAgencija/index.html#" ||
-        window.location.href === "http://localhost:8080/TuristickaAgencija/#") {
+    if (window.location.href === "https://cilimxd.github.io/Turisticka_agencija_liveindex.html"
+        || window.location.href === "https://cilimxd.github.io/Turisticka_agencija_live" ||
+        window.location.href === "https://cilimxd.github.io/Turisticka_agencija_live/index.html#" ||
+        window.location.href === "https://cilimxd.github.io/Turisticka_agencija_live/#") {
         var div = document.getElementById("grcka");
         div.classList.add("active");
     }
