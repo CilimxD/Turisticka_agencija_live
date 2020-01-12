@@ -147,6 +147,7 @@ $("document").ready(function () {
             for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
                 zvezdice += "<span class='glyphicon glyphicon-star'></span>";
             }
+            console.log(zvezdice);
             proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
