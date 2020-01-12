@@ -124,27 +124,26 @@ $("document").ready(function () {
         console.log(smestaj[drzavaMesto][0])
         console.log(CenaSobebroj2[drzavaMesto][0]);
         console.log(tipSmestaja[drzavaMesto][0])
-        // function proveraDrugu(i) {
-        //     if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
-        //         console.log("Undefined")
-        //         x="";
-        //     }
-        //     if (typeof CenaSobebroj2[drzavaMesto] != 'undefined') {
-        //         x = CenaSobebroj2[drzavaMesto][i];
-        //     }
-        // }
-        // for (var j = 0; j < brojsobe; j++) {
-        //     sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
-        //     console.log(sobeObe)
-        // }
-        // for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
-        //     zvezdice += "<span class='glyphicon glyphicon-star'></span>";
-        //     console.log(zvezdice)
-        // }
+        function proveraDrugu(i) {
+            if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
+                console.log("Undefined")
+                x="";
+            }
+            if (typeof CenaSobebroj2[drzavaMesto] != 'undefined') {
+                x = CenaSobebroj2[drzavaMesto][i];
+            }
+        }
+        for (var j = 0; j < brojsobe; j++) {
+            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+            console.log(sobeObe)
+        }
         
-        console.log(duzina)
         for (var i=0; duzina > i; i++) {
-            console.log("test")
+            for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
+                zvezdice += "<span class='glyphicon glyphicon-star'></span>";
+                console.log(zvezdice)
+            }
+            proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
                     "<h1 class='naslov' style='font-size: 80px'>" + mestoNaziv + " &#160" + tipSmestaja[drzavaMesto][i] + "</h1>" +
@@ -177,10 +176,6 @@ $("document").ready(function () {
                     "</div>" +
                 "</div>"
             zvezdice = "";
-            console.log(txt)
-            console.log(x)
-            
-            console.log(zvezdice);
         }
         $("#minime").html(txt);
     }
