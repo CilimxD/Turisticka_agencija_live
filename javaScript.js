@@ -142,7 +142,6 @@ $("document").ready(function () {
             console.log(zvezdice)
         }
         for (var i; duzina > i; i++) {
-            
             proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
