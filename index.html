@@ -1,196 +1,249 @@
 <!DOCTYPE html>
+
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MilicTurs</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="bootstrap/bootstrap-theme.min.css " rel="stylesheet" type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
-        <link href="main.css" rel="stylesheet" type="text/css">
-        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MilicTurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap/bootstrap-theme.min.css " rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <link href="main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="javaScript.js"></script>
     <link rel="import" href="pages/header.html">
-    
+    <link rel="import" href="pages/footer.html">
 </head>
+
 <body>
-<div w3-include-html="pages/header.html"></div>     
-
-<div class='container' style="margin-top: 20px;">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <sql:query dataSource="${db}" var="slider"> 
-                SELECT drzava.drz_id,mesta.mes_id,specjalne_ponude.spec_opis,specjalne_ponude.spec_jpg,drzava.drz_naziv,mesta.mes_lokacija
-                FROM specjalne_ponude
-                INNER JOIN mesta ON specjalne_ponude.mes_id = mesta.mes_id
-                INNER JOIN drzava ON mesta.drz_id = drzava.drz_id;
-            </sql:query>
-            <c:forEach items="${slider.rows}" var="items" >
-                <c:set value="${items.drz_id}" var="drzavaId" />
-                <c:set value="${items.mes_id}" var="mestaId" />
-                <c:set value="${items.drz_naziv}" var="drzava" />
-                <c:set value="${items.spec_opis}" var="specPonude" />
-                <c:set value="${items.spec_jpg}" var="jpg" />
-
-                <!--Sad pravimo slajder  -->
-
-                <div class="item" id="${fn:toLowerCase(drzava)}">
-                    <img src="img/${jpg}" alt="Slika ${drzava}">
+    <div w3-include-html="pages/header.html"></div>
+    <div class='container' style="margin-top: 20px;">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active" id="grcka">
+                    <img src="img/grcka.jpg" alt="slika Grcke 2019">
                     <div class="carousel-caption">
-                        <h1>${specPonude}</h1>
-                        <p>Ako zelite da saznate vise o ovoj ponudi kliknite <a href="pages/arazmani.jsp?idDrzave=${drzavaId}&idMesta=${mestaId}">
-                                <button class = "btn btn-primary">OVDE</button></a></p>        
+                        <h1>Letovanje Grcka 2019/2020</h1>
+                        <p>Ako zelite da saznate vise o ovoj ponudi kliknite <a href='pages/arazmani.html?idDrzave=Grcka&idMesta=Tasos'>
+                                <button class="btn btn-primary">OVDE</button></a></p>
                     </div>
                 </div>
-            </c:forEach>              
-
-        </div>
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
-<div class="container" style="margin-top: 30px;"> 
-    <div class="col-sm-9">
-        <!--leva strana-->
-        <sql:query dataSource="${db}" var="result"> 
-            SELECT * from drzava;
-        </sql:query>
-        <c:forEach items="${result.rows}" var="niz">
-            <c:set value="${niz.drz_id}" var="drzId"/>
-            <c:set value="${niz.drz_naziv}" var="drzNaz" />
-
-            <div class="row">
-                <h1 style="text-align: center;">${drzNaz} najbolje ponude</h1>
-                <sql:query dataSource="${db}" var="mes"> 
-                    SELECT * from mesta where drz_id = ${drzId}
-                </sql:query>
-                <c:forEach items="${mes.rows}" var="mesta1" varStatus="loop1">
-                    <c:if test="${loop1.first}">
-                        <c:set var="min" value="${mesta1.mes_id}" />
-                    </c:if>     
-                    <c:forEach items="${mes.rows}" var="mesta2" varStatus="loop2">  
-                        <c:if test="${loop2.last}" >
-                            <c:set value="${mesta2.mes_id}" var="max"/>
-                        </c:if>
-                    </c:forEach>      
-                </c:forEach>
-
-                <%
-                    java.util.ArrayList list = new java.util.ArrayList();
-                    Object maxID = pageContext.getAttribute("max");
-                    Object minID = pageContext.getAttribute("min");
-
-                    int maxidMesta = Integer.parseInt(String.valueOf(maxID));
-                    int minidMesta = Integer.parseInt(String.valueOf(minID));
-                    int x = (int) (java.lang.Math.random() * ((maxidMesta - minidMesta) + 1) + minidMesta);
-                    list.add(x);
-                    int y = 0;
-                    int z = 0;
-                    while (y == 0 || y == x) {
-                        y = (int) (java.lang.Math.random() * ((maxidMesta - minidMesta) + 1) + minidMesta);
-                        if (y != x) {
-                            list.add(y);
-                        }
-                    }
-                    while (z == 0 || z == x || z == y) {
-                        z = (int) (java.lang.Math.random() * ((maxidMesta - minidMesta) + 1) + minidMesta);
-                        if (z != y && z != x) {
-                            list.add(z);
-                        }
-                    }
-
-                    pageContext.setAttribute("broj", list);
-
-                %>
-
-                <c:forEach items="${broj}" var="randomBroj">
-                    <sql:query dataSource="${db}" var="ponuda"> 
-                        SELECT mesta.mes_id,mesta.mes_kraopis,mesta.mes_lokacija,mesta.mes_slika,drzava.drz_id FROM mesta
-                        INNER JOIN drzava ON drzava.drz_id = mesta.drz_id
-                        WHERE mesta.mes_id="${randomBroj}";
-                    </sql:query>        
-                    <c:forEach items="${ponuda.rows}" var="ponudeDole">
-                        <c:set value="${ponudeDole.mes_kraopis}" var="kratakOpis" />
-                        <c:set value="${ponudeDole.mes_lokacija}" var="imeMesta" />
-                        <c:set value="${ponudeDole.mes_slika}" var="jpg" />
-                        <c:set value="${ponudeDole.drz_id}" var="idDrzava" />
-                        <c:set value="${ponudeDole.mes_id}" var="idMesta" />
-                        <div class="col-sm-4 col-xs-12" >
-                            <div class= "ins" >
-                                <img src = "img/${jpg}.jpg" width = "100%" height="200px" class="slika">
-                                <div class="text">
-                                    <h4>${imeMesta}</h4>
-                                    <p>${kratakOpis}</p>
-                                    <p><a href="pages/arazmani.jsp?idDrzave=${idDrzava}&idMesta=${idMesta}" 
-                                          class="btn btn-primary" role="button">Arazmani za ${imeMesta}</a></p>
-                                </div>
-                            </div>
-                        </div>                           
-                    </c:forEach> 
-                </c:forEach>
+                <div class="item" id="srbija">
+                    <img src="img/kopaonik.jpg" alt="slika Kopaonika">
+                    <div class="carousel-caption">
+                        <h1>Zimovanje Kopaonik 2019/2020</h1>
+                        <p>Ako zelite da saznate vise o ovoj ponudi kliknite <a href='pages/arazmani.html?idDrzave=Srbija&idMesta=Kopaonik'>
+                                <button class="btn btn-primary">OVDE</button></a></p>
+                    </div>
+                </div>
+                <div class="item" id="srbija">
+                    <img src="img/stara_planina.jpg" alt="slika Stare planine">
+                    <div class="carousel-caption">
+                        <h1>Leto Stara planina 2019/2020</h1>
+                        <p>Ako zelite da saznate vise o ovoj ponudi kliknite <a href='pages/arazmani.html?idDrzave=Srbija&idMesta=Stara Planina'>
+                                <button class="btn btn-primary">OVDE</button></a></p>
+                    </div>
+                </div>
             </div>
-        </c:forEach>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 30px;">
+        <div class="col-sm-9">
+            <!--leva strana-->
+            <div class="row">
+                <h1 style="text-align: center;">Srbija najbolje ponude</h1>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/ribarska.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Ribarska banja</h4>
+                            <p>Ribarska Banja je naseljeno mesto grada Kruševca u Rasinskom okrugu. Prema popisu iz 2011. godine bilo je 189 stanovnika a 2002. bilo je 277 stanovnika</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Srbija&idMesta=Ribarska banja" class="btn btn-primary" role="button">Arazmani za Ribarska banja</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/stara_planina1.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Stara Planina</h4>
+                            <p>Stara planina, ili Balkan planina ili Ćiprovački Balkan ili po Turcima Kodža Balkan ili samo Balkan, pripada sistemu Balkanskih planina </p>
+                            <p><a href="pages/arazmani.html?idDrzave=Srbija&idMesta=Stara Planina" class="btn btn-primary" role="button">Arazmani za Stara Planina</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/zdrelo_banja.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Ždrelo banja</h4>
+                            <p>Ždrelo je naselje u Srbiji u opštini Petrovac na Mlavi u Braničevskom okrugu. Prema popisu iz 2011. bilo je 618 stanovnika.</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Srbija&idMesta=Zdrelo banja" class="btn btn-primary" role="button">Arazmani za Ždrelo banja</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1 style="text-align: center;">Grcka najbolje ponude</h1>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/krf.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Krf</h4>
+                            <p>Krf drugo po veličini, od sedam većih Jonskih ostrva, a ujedno i jedno od najlepših grčkih ostrva. Krf leži u Jonskom moru i jedno od lepših grčkih ostrva</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Grcka&idMesta=Krf" class="btn btn-primary" role="button">Arazmani za Ribarska banja</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/tasos.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Tasos</h4>
+                            <p>Tasos  je grčko ostrvo koje se nalazi u sjevernim Egejima, tj. sjeveroistočnom dijelu Grčke. Ostrvo čini istoimeni okrug</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Grcka&idMesta=Tasos" class="btn btn-primary" role="button">Arazmani za Stara Planina</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/lefkada.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Lefkada</h4>
+                            <p>Tasos  je grčko ostrvo koje se nalazi u sjevernim Egejima, tj. sjeveroistočnom dijelu Grčke. Ostrvo čini istoimeni okrug</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Grcka&idMesta=Lefkada" class="btn btn-primary" role="button">Arazmani za Ždrelo banja</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- novi red -->
+            <!-- novi red -->
+            <div class="row">
+                <h1 style="text-align: center;">Turska najbolje ponude</h1>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/bodrum.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Bodrum</h4>
+                            <p>Bodrum  je popularno tursko letovalište na obali Egejskog mora i luka u provinciji Mugla. U antičkoj Grčkoj je bio poznat kao Halikarnas</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Turska&idMesta=Bodrum" class="btn btn-primary" role="button">Arazmani za Bodrum</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/marmaris.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Marmaris</h4>
+                            <p>U Marmarisu vlada sredozemna klima, koju odlikuju topla i vlažna leta i hladne i kišne zime. Padavine su retke između maja i oktobra. Leta su topla i vlažna</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Turska&idMesta=Marmaris" class="btn btn-primary" role="button">Arazmani za Marmaris</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12">
+                    <div class="ins">
+                        <img src="img/antalija.jpg" alt="" width="100%" height="200px" class="slika">
+                        <div class="text">
+                            <h4>Antalija</h4>
+                            <p>Antalija je grad u Turskoj u vilajetu Antalija. Nalazi se na mediteranskoj obali. To je glavni grad plodne primorske ravnice</p>
+                            <p><a href="pages/arazmani.html?idDrzave=Turska&idMesta=Antalija" class="btn btn-primary" role="button">Arazmani za Ždrelo banja</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!--kraj leva strana-->
-    </div>   
-    <div class="col-sm-3">
+        </div>
         <!-- desna strana -->
-        <div class="meni_desni">
-            <p class="meni_desni_text">Ponude:</p>
-            <sql:query dataSource="${db}" var="meniDesno"> 
-                SELECT drzava.drz_id,drzava.drz_naziv FROM drzava
-            </sql:query>
-            <c:forEach items="${meniDesno.rows}" var="drzave">
-                <c:set value="${drzave.drz_id}" var="drzavaId"/>
-                <c:set value="${drzave.drz_naziv}" var="drzava"/>
+        <div class="col-sm-3">
+            <div class="meni_desni" style="position: absolute;">
+                <p class="meni_desni_text">Ponude:</p>
+
                 <div class="row" style="padding-top: 8px;">
                     <div class="col-xs-8" style="padding-right: 0px;">
-                        <a href="pages/mesta.jsp?drzavaID=${drzavaId}" type="button" class="btn btn-warning btn-lg btn-block buttonLeft">${drzava}</a>
+                        <a href="pages/mesta.html?drzavaID=Srbija" type="button"
+                            class="btn btn-warning btn-lg btn-block buttonLeft">Srbija</a>
                     </div>
                     <div class="col-xs-4" style="padding-left: 0px;">
                         <a type="button" class="btn btn-warning btn-lg btn-block buttonRight" data-toggle="collapse"
-                           href="#collapse${i}"> <span class="caret"></span></a>       
+                            href="#collapse1"> <span class="caret"></span></a>
                     </div>
                 </div>
-                <div id="collapse${i}" class="collapse">
+                <div id="collapse1" class="collapse">
                     <ul class="list-group">
-                        <sql:query dataSource="${db}" var="meniDe"> 
-                            SELECT mesta.mes_id,mesta.mes_lokacija,drzava.drz_id,drzava.drz_naziv FROM mesta
-                            INNER JOIN drzava ON mesta.drz_id=drzava.drz_id WHERE mesta.drz_id=${drzavaId}
-                        </sql:query>
-                        <c:forEach items="${meniDe.rows}" var="mesta">
-                            <c:set value="${mesta.mes_id}" var="mestaId" />
-                            <c:set value="${mesta.mes_lokacija}" var="mesta" />
-                            <a class="list-group-item list-group-item-info" href="pages/arazmani.jsp?idDrzave=${drzavaId}&idMesta=${mestaId}">${mesta}</a>
-                        </c:forEach>    
-                    </ul>              
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Srbija&idMesta=Kopaonik">Kopaonik</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Srbija&idMesta=Ribarska banja">Ribarska banja</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Srbija&idMesta=Stara Planina">Stara Planina</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Srbija&idMesta=Zdrelo banja">Zdrelo banja</a>
+                    </ul>
                 </div>
-                <c:set var="i" value="${i + 1}" scope="page"/>    
-            </c:forEach>
-            <!--kraj desne strane-->
+                <div class="row" style="padding-top: 8px;">
+                    <div class="col-xs-8" style="padding-right: 0px;">
+                        <a href="pages/mesta.html?drzavaID=Grcka" type="button"
+                            class="btn btn-warning btn-lg btn-block buttonLeft">Grcka</a>
+                    </div>
+                    <div class="col-xs-4" style="padding-left: 0px;">
+                        <a type="button" class="btn btn-warning btn-lg btn-block buttonRight" data-toggle="collapse"
+                            href="#collapse2"> <span class="caret"></span></a>
+                    </div>
+                </div>
+                <div id="collapse2" class="collapse">
+                    <ul class="list-group">
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Grcka&idMesta=Krf">Krf</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Grcka&idMesta=Tasos">Tasos</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Grcka&idMesta=Lefkada">Lefkada</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Grcka&idMesta=Zakintos">Zakintos</a>
+                    </ul>
+                </div>
+                <div class="row" style="padding-top: 8px;">
+                    <div class="col-xs-8" style="padding-right: 0px;">
+                        <a href="pages/mesta.html?drzavaID=Turska" type="button"
+                            class="btn btn-warning btn-lg btn-block buttonLeft">Turska</a>
+                    </div>
+                    <div class="col-xs-4" style="padding-left: 0px;">
+                        <a type="button" class="btn btn-warning btn-lg btn-block buttonRight" data-toggle="collapse"
+                            href="#collapse3"> <span class="caret"></span></a>
+                    </div>
+                </div>
+                <div id="collapse3" class="collapse">
+                    <ul class="list-group">
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Turska&idMesta=Marmaris">Marmaris</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Turska&idMesta=Antalija">Antalija</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Turska&idMesta=Bodrum">Bodrum</a>
+                        <a class="list-group-item list-group-item-info" href="pages/arazmani.html?idDrzave=Turska&idMesta=Instabul">Instabul</a>
+                    </ul>
+                </div>
+                <!--kraj desne strane-->
+            </div>
         </div>
     </div>
-</div>
-<div class="raw foot"></div>
-<script>
-includeHTML();
-</script>
+    <div class="raw foot">
+        <div w3-include-html="pages/footer.html"></div>
+    </div>
+    <script>
+        includeHTML();
+    </script>
+    aktivna();
+    </script>
 </body>
-</html>   
-
-

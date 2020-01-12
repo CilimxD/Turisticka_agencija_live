@@ -1,17 +1,24 @@
-<%-- 
-    Document   : kontakt
-    Created on : May 28, 2019, 8:46:58 PM
-    Author     : PC
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div><c:import url="header.jsp"/></div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MilicTurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../bootstrap/bootstrap-theme.min.css " rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <link href="../main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../javaScript.js"></script>
+    <link rel="import" href="header.html">
+    <link rel="import" href="footer.html">
+</head>
+<body>
+<div w3-include-html="header.html"></div>
 <div class="container">
     <h1 class="naslov">Kontaktirajte nas</h1>
 </div>
-
 <div class="container" style="padding-top: 50px;">
     <div class="col-sm-6">
         <form method="post" action="mailto:Milic@tours.com?subject=ime&body=tekst">
@@ -44,4 +51,9 @@
         <p class="text4" style="color: black;">tel: 011/555-555</p>
     </div>
 </div>
-<div class="raw foot"><c:import url="footer.jsp"/></div>
+<div class="raw foot"><div w3-include-html="footer.html"></div></div>
+<script>
+    includeHTML();
+</script>
+</body>
+
