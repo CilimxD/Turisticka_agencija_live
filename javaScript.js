@@ -42,16 +42,6 @@ $("document").ready(function () {
             }
         });
     };
-    var putanja = window.location.pathname;
-    var brojKose;
-    var brojTacke;
-    var idStr;
-    brojKose = putanja.lastIndexOf("/") + 1;
-    brojTacke = putanja.lastIndexOf(".");
-    imeStr = putanja.substring(brojKose, brojTacke);
-    idStr = $("li");
-    var duzinaa = idStr.length;
-
     //    setovanje aktivne klase za slider da radi
 
     if (window.location.href === "https://cilimxd.github.io/Turisticka_agencija_liveindex.html"
@@ -143,7 +133,7 @@ $("document").ready(function () {
             }
         }
         for (var j = 0; j < brojsobe; j++) {
-            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
             "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
             console.log(sobeObe)
         }
