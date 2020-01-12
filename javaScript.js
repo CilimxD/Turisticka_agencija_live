@@ -151,7 +151,6 @@ $("document").ready(function () {
                 zvezdice += "<span class='glyphicon glyphicon-star'></span>";
                 console.log(zvezdice)
             }
-            console.log(zvezdice);
             proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
@@ -186,6 +185,9 @@ $("document").ready(function () {
                 "</div>"
             zvezdice = "";
             console.log(txt)
+            console.log(x)
+            
+            console.log(zvezdice);
         }
         $("#proba").html(txt);
     }
