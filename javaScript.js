@@ -185,7 +185,7 @@ $("document").ready(function () {
                     "</div>" +
                 "</div>"
             zvezdice = "";
-
+            console.log(txt)
         }
         $("#proba").html(txt);
     }
