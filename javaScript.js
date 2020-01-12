@@ -134,8 +134,7 @@ $("document").ready(function () {
             }
         }
         for (var j = 0; j < brojsobe; j++) {
-            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
-            "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
             console.log(sobeObe)
         }
         for (var i; duzina > i; i++) {
