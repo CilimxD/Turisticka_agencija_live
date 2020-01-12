@@ -141,6 +141,8 @@ $("document").ready(function () {
         //     zvezdice += "<span class='glyphicon glyphicon-star'></span>";
         //     console.log(zvezdice)
         // }
+        
+        console.log("test")
         for (var i; duzina > i; i++) {
             console.log("test")
             txt +=
