@@ -64,7 +64,6 @@ $("document").ready(function () {
     var dugaciUrl = window.location.href;
     var upitnik = dugaciUrl.lastIndexOf("?");
     var URL = dugaciUrl.substring(0, upitnik);
-    console.log(URL);
     if (URL === "https://cilimxd.github.io/Turisticka_agencija_live/pages/mesta.html") {
         var nazivDrzave = dugaciUrl.lastIndexOf("=") + 1;
         var txt = "";
