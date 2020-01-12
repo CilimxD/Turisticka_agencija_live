@@ -143,7 +143,7 @@ $("document").ready(function () {
         // }
         
         console.log(duzina)
-        for (var i; duzina > i; i++) {
+        for (var i=0; duzina > i; i++) {
             console.log("test")
             txt +=
                 "<div class='container'>" +
