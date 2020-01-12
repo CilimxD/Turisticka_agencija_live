@@ -123,26 +123,26 @@ $("document").ready(function () {
         var zvezdice = "";
         console.log(smestaj[drzavaMesto][0])
         console.log(CenaSobebroj2[drzavaMesto][0]);
-        // function proveraDrugu(i) {
-        //     if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
-        //         console.log("Undefined")
-        //         x="";
-        //     }
-        //     if (typeof CenaSobebroj2[drzavaMesto] != 'undefined') {
-        //         x = CenaSobebroj2[drzavaMesto][i];
-        //     }
-        // }
-        // for (var j = 0; j < brojsobe; j++) {
-        //     sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
-        //     "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
-        //     console.log(sobeObe)
-        // }
-        // for (var i; duzina > i; i++) {
-        //     for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
-        //         zvezdice += "<span class='glyphicon glyphicon-star'></span>";
-        //         console.log(brZvezdica[drzavaMesto][i] + "ajmo jos ovo da pog")
-        //     }
-            // proveraDrugu(i);
+        function proveraDrugu(i) {
+            if (typeof CenaSobebroj2[drzavaMesto] == 'undefined') {
+                console.log("Undefined")
+                x="";
+            }
+            if (typeof CenaSobebroj2[drzavaMesto] != 'undefined') {
+                x = CenaSobebroj2[drzavaMesto][i];
+            }
+        }
+        for (var j = 0; j < brojsobe; j++) {
+            sobeObe += "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>" +
+            "<th>Soba broj " + redniBrojSobe[drzavaMesto][j] + "</th>"
+            console.log(sobeObe)
+        }
+        for (var i; duzina > i; i++) {
+            for (var j = 0; j < brZvezdica[drzavaMesto][i]; j++) {
+                zvezdice += "<span class='glyphicon glyphicon-star'></span>";
+                console.log(zvezdice)
+            }
+            proveraDrugu(i);
             txt +=
                 "<div class='container'>" +
                     "<h1 class='naslov' style='font-size: 80px'>" + mestoNaziv + " &#160" + tipSmestaja[drzavaMesto][i] + "</h1>" +
@@ -169,7 +169,7 @@ $("document").ready(function () {
                                 "<td>" + tipSobe[drzavaMesto][i] + "</td>" +
                                 "<td>" + brSobe[drzavaMesto][i] + "</td>" +
                                 "<td>Cena po danu " + CenaSobebroj1[drzavaMesto][i] + " din</td>" +
-                                "<td>Cena po danu " +" din</td>" + 
+                                "<td>Cena po danu " + x + " din</td>" + 
                             "</tr>" +
                         "</table>" +
                     "</div>" +
@@ -181,6 +181,7 @@ $("document").ready(function () {
             console.log(zvezdice);
         }
         $("#minime").html(txt);
-    });
+    }
+});
 
 
